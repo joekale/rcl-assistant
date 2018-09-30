@@ -1,6 +1,7 @@
 FROM golang:latest as builder
 WORKDIR /go/src/rcl-assistant/assistant
 RUN go get gopkg.in/yaml.v2
+RUN go get github.com/streadway/amqp
 COPY *.go .
 COPY messages/* ./messages/
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o rcl-assistant .
